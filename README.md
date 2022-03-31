@@ -34,4 +34,6 @@ Local Inventory Database System
      
      2.5 you must also set up a crontab job to run the extract.py to run weekly, and load.py to run 2-4 times a day. you must also
          edit the /etc/rc.local file to run the scan.py on boot so that it will run in the foreground
-         2.5.1 Data is prepared on another computer before being sent back to be downloaded from Google Drive using pydrive.
+3. Data is prepared on another computer before being sent back to be downloaded from Google Drive using pydrive.
+4. you must also create the OAuth2 credentials and client secrets JSON files to use the downloader. This is not integral to the this, but it does help the        automation. 
+     
