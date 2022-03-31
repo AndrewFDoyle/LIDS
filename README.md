@@ -20,8 +20,8 @@ Local Inventory Database System
                 real_qty smallint not null,
                 upc bigint not null,
                 perishable tinyint(1) null,
-                date_eneterd date not null,
-                date_expired date null);
+                date_entered date not null,
+                date_expires date null);
 
          2.4.2 CREATE TABLE IF NOT EXISTS waste(
                id int primary key auto_increment,
