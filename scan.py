@@ -102,7 +102,7 @@ while True: # program runs in foreground
                 file_empty = os.stat(file_path)
                 print("csv file is " + str(file_empty.st_size) + " bytes.\n")
                 if file_empty.st_size <= 72: # signifying that only the header was added 
-                    print("the file size is less than 60 bytes and therefore did not send.\n")
+                    print("the file size is less than 72 bytes and therefore did not send.\n")
                     # move the file that was sent
                     try:
                         emailed_path = parameters.local_dir + "emailed/"
