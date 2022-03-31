@@ -5,8 +5,8 @@ Local Inventory Database System
  
  this will explain the step required to create your own system and fill in the login and folder paramters that are specific to your system
 
- 1. passes *ALL* user specified parameters like login or file paths into primary modules (scan, load, extract)
- 2. FOR anyone creating their own LIDS project, if you use an unmodified version of this code, you must do the following:
+ 1. pass *ALL* user specified inputs like login or file paths into primary modules (scan, load, extract) into parameter.py
+ 2. for anyone creating their own LIDS project, if you use an unmodified version of this code, you must do the following:
      2.1 image and boot a Raspberry Pi (must have wifi connectivity) using the appropriate type of Debian/Raspberry Pi OS
      2.2 once your Pi is configured, create a LAMP server. Instructions found here: https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress
          note: These are the official instructions from Raspberry Pi, but I did not follow them and I did not use the wordpress installation.
