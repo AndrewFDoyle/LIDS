@@ -90,18 +90,18 @@ else:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
-                cur.execute("INSERT INTO food (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expired) VALUES(%s, %s, %s, %s, %s, %s, %s)", line)
+                cur.execute("INSERT INTO food (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expires) VALUES(%s, %s, %s, %s, %s, %s, %s)", line)
                 print(line)
                 cnx.commit()
 
 # flip grouped by barcode data into a temp table and overwrite the original table and drop the temp table
-cur.execute("CREATE TABLE IF NOT EXISTS food_temp (id int primary key auto_increment, label varchar(30) not null, ideal_qty int null, real_qty int not null, upc bigint not null, perishable tinyint(1), date_entered date not null, date_expired date);")
+cur.execute("CREATE TABLE IF NOT EXISTS food_temp (id int primary key auto_increment, label varchar(30) not null, ideal_qty int null, real_qty int not null, upc bigint not null, perishable tinyint(1), date_entered date not null, date_expires date);")
 print("food_temp table created.\n")
-cur.execute("INSERT INTO food_temp (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expired) SELECT label, ideal_qty, count(*) as real_qty, upc, perishable, date_entered, date_expired FROM food GROUP BY upc ORDER BY upc ASC;")
+cur.execute("INSERT INTO food_temp (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expires) SELECT label, ideal_qty, count(*) as real_qty, upc, perishable, date_entered, date_expires FROM food GROUP BY upc ORDER BY upc ASC;")
 print("data inserted into food_temp from food.\n")
 cur.execute("TRUNCATE TABLE food;")
 print("food table truncated.\n")
-cur.execute("INSERT INTO food (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expired) SELECT label, ideal_qty, count(*) as real_qty, upc, perishable, date_entered, date_expired FROM food_temp GROUP BY upc ORDER BY upc ASC;")
+cur.execute("INSERT INTO food (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expires) SELECT label, ideal_qty, count(*) as real_qty, upc, perishable, date_entered, date_expires FROM food_temp GROUP BY upc ORDER BY upc ASC;")
 cur.execute("DROP TABLE food_temp;")
 print("food_temp table dropped.\n")
 cnx.commit()
