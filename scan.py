@@ -101,7 +101,7 @@ while True: # program runs in foreground
                 print(file_path + "\n")
                 file_empty = os.stat(file_path)
                 print("csv file is " + str(file_empty.st_size) + " bytes.\n")
-                if file_empty.st_size <= 60: # signifying that only the header was added 
+                if file_empty.st_size <= 72: # signifying that only the header was added 
                     print("the file size is less than 60 bytes and therefore did not send.\n")
                     # move the file that was sent
                     try:
