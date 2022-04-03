@@ -5,8 +5,15 @@ version 1.0
 revised: 04-02-2022
 
 this is a "home made" dictionary that tries to locate a label from the original integrated pantry spreadsheet.
-after cleaning the spreadhseet to fit this purpose in Excel, I pasted all the entries I collected in the
-pantry dictionary. the scan program will call this to get labels.
+it also replaces the need to use an external database with product labels. after cleaning the spreadhseet to 
+fit this purpose in Excel, I pasted all the entries I collected in the pantry dictionary. the scan program 
+will call this to get labels.
+
+notes:
+1. always use the package barcode. store-added barcodes typically cannot be read by scanner guns suggesting they are not UPC-A codes.
+2. the 'easy' way I found to create the dictionary is to use the concatenate function in excel adding the single quotes around each 
+   barcode and label separately, then add a colon column and spilling it to the length of the list and the concatenating the left, center, 
+   and right strings together.
 
 """
 
