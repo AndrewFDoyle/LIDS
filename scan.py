@@ -18,6 +18,7 @@ import time
 import smtplib
 import parameters
 import RPi.GPIO as GPIO
+from label import get_label
 import mysql.connector as mariadb
 from datetime import date, timedelta
 
@@ -42,7 +43,7 @@ GPIO.setup(13, GPIO.OUT) # yellow
 GPIO.setup(26, GPIO.OUT) # green
 
 """
-#initialize project subfolders - UNCOMMENT IF you want to automatically initialize these folders
+#initialize project subfolders
 
 project_path = parameters.local_dir
 emailed_dir = project_path + "emailed/"
@@ -89,7 +90,8 @@ while True: # program runs in foreground
                         future = today + timedelta(days = 7) # system assumes statically 7 day lead for all items as a perish date
                         #str_future = str(future).replace("-","_")
                         str_entry = str(entry)
-                        file_content = "none, 0, 1," + str_entry + ", 1, " + str(today) + ", " + str(future) + "\n"
+                        label = get_label(entry)
+                        file_content = label + ", 0, 1," + str_entry + ", 1, " + str(today) + ", " + str(future) + "\n"
                         f.write(file_content)
                         entry = int(entry)
                         
@@ -165,7 +167,8 @@ while True: # program runs in foreground
             else:
                 if entry != scan1 and entry != scan2 and entry != scan3:
                     str_entry = str(entry)
-                    file_content = "none, 0, 1, " + str_entry + ", 0, " + str(today) + ", 0000-00-00" + "\n"
+                    label = get_label(entry)
+                    file_content = label + ", 0, 1, " + str_entry + ", 0, " + str(today) + ", 0000-00-00" + "\n"
                     f.write(file_content)
                     
     elif entry == scan2:

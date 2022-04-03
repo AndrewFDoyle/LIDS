@@ -95,7 +95,7 @@ else:
                 cnx.commit()
 
 # flip grouped by barcode data into a temp table and overwrite the original table and drop the temp table
-cur.execute("CREATE TABLE IF NOT EXISTS food_temp (id int primary key auto_increment, label varchar(30) not null, ideal_qty int null, real_qty int not null, upc bigint not null, perishable tinyint(1), date_entered date not null, date_expires date);")
+cur.execute("CREATE TABLE IF NOT EXISTS food_temp (id int primary key auto_increment, label varchar(50) not null, ideal_qty int null, real_qty int not null, upc bigint not null, perishable tinyint(1), date_entered date, date_expires date);")
 print("food_temp table created.\n")
 cur.execute("INSERT INTO food_temp (label, ideal_qty, real_qty, upc, perishable, date_entered, date_expires) SELECT label, ideal_qty, count(*) as real_qty, upc, perishable, date_entered, date_expires FROM food GROUP BY upc ORDER BY upc ASC;")
 print("data inserted into food_temp from food.\n")
