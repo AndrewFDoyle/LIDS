@@ -18,7 +18,9 @@ notes:
 """
 
 def get_label(serial):
-    
+   
+   serial = str(serial)
+   
     # jump to the bottom of the pantry dictionary for the search statement and return label
 
     pantry = {
