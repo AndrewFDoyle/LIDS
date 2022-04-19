@@ -1,7 +1,5 @@
 # LIDS
 Local Inventory Database System
-
- THIS IS THE READ ME FOR THE LOCAL INVENTORY DATABASE SYSTEM - LIDS
  
  this will explain the step required to create your own system and fill in the login and folder paramters that are specific to your system
 
